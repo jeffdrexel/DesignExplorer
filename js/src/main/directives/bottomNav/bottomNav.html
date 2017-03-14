@@ -1,13 +1,30 @@
 <div class="bottom-nav">
-  <div id="handle" class="ui-resizable-handle ui-resizable-n"></div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12">
+    <div id="handle" class="ui-resizable-handle ui-resizable-n"></div>
+    <div class="container-fluid bottom-nav-content">
+        <div class="row">
+            <!-- <div class="col-xs-3">
 
-        <!-- <h3>Hi i am at the bottom</h3> -->
+        <h4>Inputs</h4>
+        <ul>
+          <li ng-repeat="input in designExplorer.params.in">
+            {{input}}
+          </li>
+        </ul>
 
-      </div>
+        <h4>Outputs</h4>
+        <ul>
+          <li ng-repeat="output in designExplorer.params.out">
+            {{output}}
+          </li>
+        </ul>
+      </div> -->
+
+            <!-- <div class="col-xs-9">
+
+      </div> -->
+        </div>
+
+        <div id="parallel-coords" style="height: 100%;min-height: 250px"></div>
     </div>
-  </div>
 
 </div>

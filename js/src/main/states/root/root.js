@@ -13,4 +13,11 @@ app.config(function ($stateProvider) {
 
 app.controller('RootStateCtrl', function ($rootScope, $scope) {
 
+	var designExplorer;
+
+	d3.csv("design_explorer_data/default_onload.csv")
+		.get(function (error, rows) {
+			$scope.designExplorer = new DesignExplorer(rows);
+		});
+
 });

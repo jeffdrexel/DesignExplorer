@@ -1038,6 +1038,8 @@ var update_sc_colorsOnly;
 			inputData.push(inputParams);
 			outputData.push(outputParams);
 			cleanedData.push(cleanedParams);
+
+
 		});
 
 
@@ -1048,6 +1050,8 @@ var update_sc_colorsOnly;
 				d.Rating = 0;
 			});
 		}
+
+		console.log(inputData,outputData,cleanedData);
 
 	}
 
@@ -1153,6 +1157,8 @@ var update_sc_colorsOnly;
 		// click event should highlight the image in thumbnails and show it in zoomed
 		// brush should filter thumbnails
 		// get parallel coordinates
+
+		console.log(cleanedParams4pc);
 
 		graph = d3.parcoords()('#graph')
 			.data(cleanedData)

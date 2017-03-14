@@ -12,8 +12,6 @@ app.directive('bottomNav', function ($timeout) {
 		templateUrl: 'js/src/main/directives/bottomNav/bottomNav.html',
 		link: function (scope) {
 
-
-
 			$timeout(function () {
 
 				var bottombar = $('.bottom-nav');
@@ -31,6 +29,13 @@ app.directive('bottomNav', function ($timeout) {
 				function resizeMainContent(){
 					$('#main-content-flow').css('padding-bottom',bottombar.height());
 				}
+			});
+
+			scope.$watch('designExplorer', function () {
+				$timeout(function(){
+					if (scope.designExplorer) scope.designExplorer.drawParallelCoordinates('#parallel-coords');
+				});
+
 			});
 		}
 	};
