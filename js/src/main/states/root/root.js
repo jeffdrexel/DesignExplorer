@@ -11,13 +11,58 @@ app.config(function ($stateProvider) {
 	});
 });
 
-app.controller('RootStateCtrl', function ($rootScope, $scope) {
+app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	var designExplorer;
 
 	d3.csv("design_explorer_data/default_onload.csv")
 		.get(function (error, rows) {
 			$scope.designExplorer = new DesignExplorer(rows);
+			$scope.selectedSortBy = $scope.designExplorer.params.in[0];
 		});
+
+
+
+	/*
+	██     ██  █████  ████████  ██████ ██   ██
+	██     ██ ██   ██    ██    ██      ██   ██
+	██  █  ██ ███████    ██    ██      ███████
+	██ ███ ██ ██   ██    ██    ██      ██   ██
+	 ███ ███  ██   ██    ██     ██████ ██   ██
+	*/
+
+	$scope.$watch('designExplorer', drawDesignExplorer);
+
+	$(window)
+		.on('resize', function () {
+			// change height and stuff?
+			if ($scope.designExplorer && $scope.designExplorer.graphs.parcoords) $scope.designExplorer.graphs.parcoords.render();
+		});
+
+
+	/*
+	 █████  ███    ██  ██████  ███    ██
+	██   ██ ████   ██ ██    ██ ████   ██
+	███████ ██ ██  ██ ██    ██ ██ ██  ██
+	██   ██ ██  ██ ██ ██    ██ ██  ██ ██
+	██   ██ ██   ████  ██████  ██   ████
+	*/
+
+	function drawDesignExplorer() {
+		$timeout(function () {
+			if ($scope.designExplorer) {
+				$scope.designExplorer.drawParallelCoordinates('#parallel-coords');
+				$scope.designExplorer.graphs.parcoords.on('brush', setFilteredEntries);
+				setFilteredEntries();
+			}
+		});
+	}
+
+	function setFilteredEntries(entries) {
+		$scope.filteredEntries = entries || $scope.designExplorer.getData();
+		$timeout(function () {
+			$scope.$apply();
+		});
+	}
 
 });

@@ -30,13 +30,6 @@ app.directive('bottomNav', function ($timeout) {
 					$('#main-content-flow').css('padding-bottom',bottombar.height());
 				}
 			});
-
-			scope.$watch('designExplorer', function () {
-				$timeout(function(){
-					if (scope.designExplorer) scope.designExplorer.drawParallelCoordinates('#parallel-coords');
-				});
-
-			});
 		}
 	};
 });

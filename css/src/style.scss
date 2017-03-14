@@ -1,7 +1,9 @@
 @import "variables";
-@import "./lib/themes/lumen/variables";
+@import "./lib/themes/sandstone/variables";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "./lib/themes/lumen/bootswatch";
+@import "./lib/themes/sandstone/bootswatch";
+@import "./parcoords";
+@import "./navbar";
 
 body,
 html {

@@ -1,7 +1,5 @@
 DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 
-	// console.log('drawing');
-
 	var designExplorer = this;
 
 	$(divSelector)
@@ -10,9 +8,7 @@ DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 	$(divSelector)
 		.addClass('parcoords');
 
-	// console.log(designExplorer.paramsPC);
-
-	var graph = d3.parcoords()(divSelector)
+	designExplorer.graphs.parcoords = d3.parcoords()(divSelector)
 		.data(designExplorer.getData())
 		// .margin({
 		// 	top: 50,
@@ -20,6 +16,7 @@ DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 		// 	bottom: 10,
 		// 	right: 20
 		// })
+		// .smoothness(0.2)
 		.alpha(0.2)
 		.alphaOnBrushed(0.05)
 		.mode("queue")

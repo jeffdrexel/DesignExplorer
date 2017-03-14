@@ -18,6 +18,9 @@ var DesignExplorer = function (originalData) {
 	// Parallel coordinate dimensions
 	designExplorer.paramsPC = {};
 
+	// All graphs namespace
+	designExplorer.graphs = {};
+
 	// Initial Cleanup
 	var keys = d3.keys(originalData[0]);
 
