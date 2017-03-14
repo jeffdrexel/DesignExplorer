@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+//The MIT License (MIT)
+//
+//Copyright (c) 2015 Thornton Tomasetti, Inc.
+//
+//Permission is hereby granted, free of charge, to any person obtaining a copy
+//of this software and associated documentation files (the "Software"), to deal
+//in the Software without restriction, including without limitation the rights
+//to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//copies of the Software, and to permit persons to whom the Software is
+//furnished to do so, subject to the following conditions:
+//
+//The above copyright notice and this permission notice shall be included in
+//all copies or substantial portions of the Software.
+//
+//THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//THE SOFTWARE.
+-->
+
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Design Explorer 3</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- D3 -->
+    <script src="./lib/d3/d3.v3.min.js" charset="utf-8"></script>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Sliders script and css -->
+    <script src="./lib/rangeslider_files/js/ion.rangeSlider.js"></script>
+    <link rel="stylesheet" href="./lib/rangeslider_files/css/normalize.css" />
+    <link rel="stylesheet" href="./lib/rangeslider_files/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="./lib/rangeslider_files/css/ion.rangeSlider.skinNice.css" />
+
+    <!-- Parallel Coordinates -->
+    <script type="text/javascript" src="./lib/pc_source_files/d3/d3.parcoords.js"></script>
+
+    <!-- D3 Parallel Coordinates CSS -->
+    <link rel="stylesheet" type="text/css" href="./lib/pc_source_files/css/d3.parcoords.css">
+
+    <!-- Radar Chart -->
+    <!-- TODO: add a switch for picking different charts to present -->
+    <script type="text/javascript" src="./lib/radar_source_files/radar-chart.js"></script>
+
+    <!-- Radar Chart CSS -->
+    <!-- TODO: add a switch for picking different charts to present -->
+    <!-- <link rel="stylesheet" type="text/css" href="./radar_source_files/radar-chart.css" /> -->
+
+    <!-- Scatter-matrix -->
+    <script src="./lib/scatter_matrix_source_files/scatter-matrix.js"></script>
+    <!-- Scatter-matrix CSS -->
+    <link type="text/css" rel="stylesheet" href="./lib/scatter_matrix_source_files/scatter-matrix.css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./lib/bootstrap_side_bar/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./lib/bootstrap_side_bar/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Various libraries that vA3C depends upon -->
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/dat.gui.js"></script>
+    <link rel="stylesheet" type="text/css" href="./lib/va3c_source_files/css/datgui_styleOverride.css">
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/three.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/OrbitControls.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/Projector.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/stats.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/jquery-ui.js"></script>
+
+    <!-- Application Files -->
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/tt-acm/Spectacles.WebViewer/gh-pages/css/SPECTACLES.css" />
+    <!-- the vA3C stylesheet -->
+    <script type="text/javascript" src="https://rawgit.com/tt-acm/Spectacles.WebViewer/gh-pages/js/SPECTACLES.js"></script>
+    <!-- the vA3C library -->
+
+    <!-- Pace for loading bar-->
+    <!-- <link rel="stylesheet" type="text/css" href="./lib/pace/pace.css" />
+    <script type="text/javascript" src="./lib/pace/pace.min.js"></script> -->
+
+    <!-- rating system -->
+    <script src="./lib/rating_source_files/jquery.rating.js" type="text/javascript" language="javascript"></script>
+    <link href="./lib/rating_source_files/jquery.rating.css" type="text/css" rel="stylesheet" />
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./lib/bootstrap_side_bar/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="designexplorer.demo">
+
+    <ui-view></ui-view>
+
+    <!-- Our builds -->
+    <script src="./js/builds/dependencies.js" type="text/javascript" language="javascript"></script>
+    <script src="./js/builds/design-explorer-lib.js" type="text/javascript" language="javascript"></script>
+    <script src="./js/builds/main.js" type="text/javascript" language="javascript"></script>
+
+</body>
+
+</html>
