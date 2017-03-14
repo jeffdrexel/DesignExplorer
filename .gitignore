@@ -5,3 +5,4 @@
 *.xml
 index.html___jb_old___
 node_modules
+npm-debug.log
