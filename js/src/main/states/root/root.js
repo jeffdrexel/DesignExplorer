@@ -4,6 +4,7 @@
 app.config(function ($stateProvider) {
 	$stateProvider.state('root', {
 		name: 'root',
+		// abstract: true,
 		url: '/',
 		templateUrl: 'js/src/main/states/root/root.html',
 		controller: 'RootStateCtrl'

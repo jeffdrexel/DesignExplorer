@@ -1,0 +1,44 @@
+@import "variables";
+@import "./lib/themes/lumen/variables";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "./lib/themes/lumen/bootswatch";
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+}
+
+#main-content-flow {
+    padding-top: $navbar-height+$grid-gutter-width;
+}
+
+.bottom-nav {
+    height: 300px;
+    overflow: auto;
+    background: $gray-lighter;
+    position: fixed !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: 100%;
+}
+
+#handle {
+    width: 100%;
+    height: 3px;
+    top: -4px;
+    background-color: $gray;
+    cursor: ns-resize;
+}
+
+.ui-resizable-helper { border: 2px dotted #00F; }
+
+.full-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(51,51,51,0.7);
+    padding-top: $navbar-height; // content to avoid navbar
+}
