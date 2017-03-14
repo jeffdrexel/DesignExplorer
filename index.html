@@ -40,49 +40,50 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- D3 -->
-    <script src="./d3/d3.v3.min.js" charset="utf-8"></script>
+    <script src="./lib/d3/d3.v3.min.js" charset="utf-8"></script>
 
     <!-- jQuery -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Sliders script and css -->
-    <script src="./rangeslider_files/js/ion.rangeSlider.js"></script>
-    <link rel="stylesheet" href="./rangeslider_files/css/normalize.css" />
-    <link rel="stylesheet" href="./rangeslider_files/css/ion.rangeSlider.css" />
-    <link rel="stylesheet" href="./rangeslider_files/css/ion.rangeSlider.skinNice.css" />
+    <script src="./lib/rangeslider_files/js/ion.rangeSlider.js"></script>
+    <link rel="stylesheet" href="./lib/rangeslider_files/css/normalize.css" />
+    <link rel="stylesheet" href="./lib/rangeslider_files/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="./lib/rangeslider_files/css/ion.rangeSlider.skinNice.css" />
 
     <!-- Parallel Coordinates -->
-    <script type="text/javascript" src="./pc_source_files/d3/d3.parcoords.js"></script>
+    <script type="text/javascript" src="./lib/pc_source_files/d3/d3.parcoords.js"></script>
 
     <!-- D3 Parallel Coordinates CSS -->
-    <link rel="stylesheet" type="text/css" href="./pc_source_files/css/d3.parcoords.css">
+    <link rel="stylesheet" type="text/css" href="./lib/pc_source_files/css/d3.parcoords.css">
 
     <!-- Radar Chart --> <!-- TODO: add a switch for picking different charts to present -->
-    <script type="text/javascript" src="./radar_source_files/radar-chart.js"></script>
+    <script type="text/javascript" src="./lib/radar_source_files/radar-chart.js"></script>
 
     <!-- Radar Chart CSS --><!-- TODO: add a switch for picking different charts to present -->
     <!-- <link rel="stylesheet" type="text/css" href="./radar_source_files/radar-chart.css" /> -->
 
     <!-- Scatter-matrix -->
-    <script src="./scatter_matrix_source_files/scatter-matrix.js"></script>
+    <script src="./lib/scatter_matrix_source_files/scatter-matrix.js"></script>
     <!-- Scatter-matrix CSS -->
-    <link type="text/css" rel="stylesheet" href="./scatter_matrix_source_files/scatter-matrix.css">
+    <link type="text/css" rel="stylesheet" href="./lib/scatter_matrix_source_files/scatter-matrix.css">
 
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap_side_bar/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./lib/bootstrap_side_bar/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="./lib/bootstrap_side_bar/css/simple-sidebar.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="bootstrap_side_bar/css/simple-sidebar.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
     <!-- Various libraries that vA3C depends upon -->
-    <script type="text/javascript" src="va3c_source_files/js/libs/dat.gui.js"></script>
-    <link rel="stylesheet" type="text/css" href="va3c_source_files/css/datgui_styleOverride.css">
-    <script type="text/javascript" src="va3c_source_files/js/libs/three.js"></script>
-    <script type="text/javascript" src="va3c_source_files/js/libs/OrbitControls.js"></script>
-    <script type="text/javascript" src="va3c_source_files/js/libs/Projector.js"></script>
-    <script type="text/javascript" src="va3c_source_files/js/libs/stats.js"></script>
-    <script type="text/javascript" src="va3c_source_files/js/libs/jquery-ui.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/dat.gui.js"></script>
+    <link rel="stylesheet" type="text/css" href="./lib/va3c_source_files/css/datgui_styleOverride.css">
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/three.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/OrbitControls.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/Projector.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/stats.js"></script>
+    <script type="text/javascript" src="./lib/va3c_source_files/js/libs/jquery-ui.js"></script>
 
     <!-- Application Files -->
     <link rel="stylesheet" type="text/css" href="https://rawgit.com/tt-acm/Spectacles.WebViewer/gh-pages/css/SPECTACLES.css" />
@@ -91,15 +92,16 @@
     <!-- the vA3C library -->
 
     <!-- Pace for loading bar-->
-    <link rel="stylesheet" type="text/css" href="pace/pace.css" />
-    <script type="text/javascript" src="pace/pace.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./lib/pace/pace.css" />
+    <script type="text/javascript" src="./lib/pace/pace.min.js"></script>
 
     <!-- rating system -->
-    <script src="./rating_source_files/jquery.rating.js" type="text/javascript" language="javascript"></script>
-    <link href="./rating_source_files/jquery.rating.css" type="text/css" rel="stylesheet" />
+    <script src="./lib/rating_source_files/jquery.rating.js" type="text/javascript" language="javascript"></script>
+    <link href="./lib/rating_source_files/jquery.rating.css" type="text/css" rel="stylesheet" />
 
-    <!-- Design Explorer Scripts -->
-    <script src="./js/designExplorer.js" type="text/javascript" language="javascript"></script>
+    <!-- Our builds -->
+    <script src="./js/builds/dependencies.js" type="text/javascript" language="javascript"></script>
+    <script src="./js/builds/design-explorer-lib.js" type="text/javascript" language="javascript"></script>
     <!-- for clean parameters before new data comes in -->
 
 
@@ -190,7 +192,7 @@
             }else{
                 GoogleID = link;
             }
-		
+
 	    GoogleID=GoogleID.split("/");
             GoogleID = GoogleID[GoogleID.length - 1];
 
@@ -200,7 +202,7 @@
 	}
 
 
-        
+
 
         return GoogleID;
     }
