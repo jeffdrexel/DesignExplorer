@@ -9,7 +9,7 @@ var shell = require('gulp-shell');
 var fs = require('fs');
 
 // Settings
-var builds = ['design-explorer-lib','main'];
+var builds = ['designexplorer','main'];
 var buildDevNames = [];
 var allJsSrcFolder = 'js/src/**/*';
 var allJsSrc = allJsSrcFolder + '.js';

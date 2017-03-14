@@ -18,7 +18,6 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	d3.csv("design_explorer_data/default_onload.csv")
 		.get(function (error, rows) {
 			$scope.designExplorer = new DesignExplorer(rows);
-			$scope.selectedSortBy = $scope.designExplorer.params.in[0];
 		});
 
 

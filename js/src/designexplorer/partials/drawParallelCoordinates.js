@@ -17,6 +17,7 @@ DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 		// 	right: 20
 		// })
 		// .smoothness(0.2)
+		.color(designExplorer.colorer)
 		.alpha(0.2)
 		.alphaOnBrushed(0.05)
 		.mode("queue")
