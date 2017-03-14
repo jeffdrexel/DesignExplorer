@@ -12,7 +12,7 @@ html {
 }
 
 #main-content-flow {
-    padding-top: $navbar-height+$grid-gutter-width;
+    padding-top: $navbar-height+$navbar-height+$grid-gutter-width;
 }
 
 .bottom-nav {

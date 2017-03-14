@@ -14,6 +14,7 @@ app.directive('animatedResults', function ($timeout) {
 
 			scope.curFrame = 0;
 			scope.frames = 0;
+			scope.curFrameInfo=null;
 			scope.$watch('filteredEntries', startNewAnimation);
 
 			var debounceNext;
@@ -31,8 +32,9 @@ app.directive('animatedResults', function ($timeout) {
 			function startNewAnimation() {
 				if (!scope.filteredEntries) return;
 				if (!scope.filteredEntries.length) {
-					return $('#animated-results')
+					$('#animated-results')
 						.attr('src', '');
+						$('#cur-frame-info').html('');
 				}
 
 				scope.curFrame = 0;
@@ -45,8 +47,10 @@ app.directive('animatedResults', function ($timeout) {
 
 			function showNextFrame() {
 				if (!scope.filteredEntries || !scope.filteredEntries.length) return;
+				scope.curFrameInfo=scope.filteredEntries[scope.curFrame];
 				$('#animated-results')
-					.attr('src', scope.filteredEntries[scope.curFrame].img);
+					.attr('src', scope.curFrameInfo.img);
+					$('#cur-frame-info').html(scope.curFrame);
 				scope.curFrame += 1;
 				if (scope.curFrame >= scope.frames) scope.curFrame = 0;
 			}
