@@ -19,7 +19,7 @@ var allCssSrcFolder = 'css/src/**/*';
 gulp.task('build-dependencies', function () {
 	return gulp.src(
 			[
-				// './node_modules/bootstrap-sass/javascripts/bootstrap.min.js',
+				'./node_modules/lodash/lodash.min.js',
 				'./node_modules/angular/angular.min.js',
 				'./node_modules/angular-ui-router/release/angular-ui-router.min.js',
 				'./node_modules/promise-polyfill/promise.min.js',
