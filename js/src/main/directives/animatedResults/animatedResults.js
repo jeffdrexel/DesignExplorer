@@ -15,22 +15,37 @@ app.directive('animatedResults', function ($timeout) {
 			scope.curFrame = 0;
 			scope.frames = 0;
 			scope.curFrameInfo = null;
-			scope.$watch('filteredEntries', startNewAnimation);
+			scope.$watch('filteredEntries', checkWhetherToAnimate);
+			scope.$watch('viewMode', checkWhetherToAnimate);
 
 			var debounceNext;
 			var animateSpeed = 300;
+			var isAnimating = false;
 
-			animate();
+			/*
+			 █████  ███    ██  ██████  ███    ██
+			██   ██ ████   ██ ██    ██ ████   ██
+			███████ ██ ██  ██ ██    ██ ██ ██  ██
+			██   ██ ██  ██ ██ ██    ██ ██  ██ ██
+			██   ██ ██   ████  ██████  ██   ████
+			*/
 
-			function animate() {
-				showNextFrame();
-				setTimeout(function () {
-					animate();
-				}, animateSpeed);
+			/**
+			 * Check whether we should move forward with animating or terminate a previous animation
+			 */
+			function checkWhetherToAnimate() {
+				if (!isAnimateMode()) {
+					cleanPreviousAnimation();
+				} else {
+					startNewAnimation();
+				}
 			}
 
+			/**
+			 * Starts a new animation
+			 */
 			function startNewAnimation() {
-				if (!scope.filteredEntries) return;
+				if (!scope.filteredEntries || !isAnimateMode()) return;
 				if (!scope.filteredEntries.length) {
 					$('#animated-results')
 						.attr('src', '');
@@ -44,9 +59,33 @@ app.directive('animatedResults', function ($timeout) {
 				var newAnimateSpeed = Math.max(100000 / scope.frames, 300); // min debounce time
 				newAnimateSpeed = Math.min(newAnimateSpeed, 1500); // max debounce time
 				animateSpeed = newAnimateSpeed;
+
+				if (!isAnimating) animate();
+				isAnimating = true;
 			}
 
+			/**
+			 * Animate loop
+			 */
+			function animate() {
+				if (!isAnimateMode()) {
+					isAnimating=false;
+					return;
+				} else {
+					showNextFrame();
+					setTimeout(function () {
+						animate();
+					}, animateSpeed);
+				}
+			}
+
+			/**
+			 * Code to move forward a frame. Called from the animate loop.
+			 */
 			function showNextFrame() {
+				if (!isAnimateMode()) return;
+				cleanPreviousAnimation();
+
 				if (!scope.filteredEntries || !scope.filteredEntries.length) return;
 				scope.curFrameInfo = scope.filteredEntries[scope.curFrame];
 
@@ -75,11 +114,25 @@ app.directive('animatedResults', function ($timeout) {
 						infoBox.append(table);
 					});
 
-				// $('#cur-frame-info')
-				// 	.html(scope.curFrame);
+				scope.designExplorer.graphs.parcoords.highlight([scope.curFrameInfo]);
 
 				scope.curFrame += 1;
 				if (scope.curFrame >= scope.frames) scope.curFrame = 0;
+			}
+
+			/**
+			 * Clean leftover stuff from a previous animation
+			 */
+			function cleanPreviousAnimation() {
+				if (scope.designExplorer && scope.designExplorer.graphs.parcoords) scope.designExplorer.graphs.parcoords.unhighlight();
+			}
+
+			/**
+			 * Whether we're currently in animation mode
+			 * @return {Boolean}
+			 */
+			function isAnimateMode() {
+				return scope.viewMode === 'animation';
 			}
 		}
 	};

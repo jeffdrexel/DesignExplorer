@@ -3,14 +3,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <results-thumbnails ng-if="viewMode=='thumbnails'"></results-thumbnails>
-                <animated-results ng-if="viewMode=='animation'" id="animated-results-container"></animated-results> 
+                <animated-results ng-show="viewMode=='animation'" id="animated-results-container"></animated-results>
             </div>
-
-            <!-- <div class="col-xs-3"> -->
-
-              <!-- -->
-                <!-- <ui-view></ui-view> -->
-            <!-- </div> -->
         </div>
     </div>
 </div>
