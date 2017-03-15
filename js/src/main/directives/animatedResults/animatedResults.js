@@ -14,7 +14,7 @@ app.directive('animatedResults', function ($timeout) {
 
 			scope.curFrame = 0;
 			scope.frames = 0;
-			scope.curFrameInfo=null;
+			scope.curFrameInfo = null;
 			scope.$watch('filteredEntries', startNewAnimation);
 
 			var debounceNext;
@@ -34,7 +34,8 @@ app.directive('animatedResults', function ($timeout) {
 				if (!scope.filteredEntries.length) {
 					$('#animated-results')
 						.attr('src', '');
-						$('#cur-frame-info').html('');
+					$('#cur-frame-info')
+						.html('');
 				}
 
 				scope.curFrame = 0;
@@ -47,10 +48,36 @@ app.directive('animatedResults', function ($timeout) {
 
 			function showNextFrame() {
 				if (!scope.filteredEntries || !scope.filteredEntries.length) return;
-				scope.curFrameInfo=scope.filteredEntries[scope.curFrame];
+				scope.curFrameInfo = scope.filteredEntries[scope.curFrame];
+
 				$('#animated-results')
 					.attr('src', scope.curFrameInfo.img);
-					$('#cur-frame-info').html(scope.curFrame);
+
+				var infoBox = $('#cur-frame-info');
+
+				infoBox.html('');
+
+				Object.keys(scope.designExplorer.params)
+					.forEach(function (key) {
+						var type = DesignExplorer.typeDisplayDictionary[key];
+						var table = $('<table class="table table-condensed"></table>');
+						var params = scope.designExplorer.params[key];
+						params.forEach(function (param) {
+							var row = $('<tr></tr>');
+							row.append('<td>' + param.display + '</td>');
+							row.append('<td>' + scope.curFrameInfo[param[DesignExplorer.dataKey]] + '</td>');
+							table.append(row);
+
+							if (param === scope.designExplorer.selectedParam) row.css('border-left', '10px solid ' + scope.designExplorer.colorer(scope.curFrameInfo))
+								.css('font-weight', 'bold');
+						});
+						infoBox.append('<h4>' + type.display + 's</h4>');
+						infoBox.append(table);
+					});
+
+				// $('#cur-frame-info')
+				// 	.html(scope.curFrame);
+
 				scope.curFrame += 1;
 				if (scope.curFrame >= scope.frames) scope.curFrame = 0;
 			}
