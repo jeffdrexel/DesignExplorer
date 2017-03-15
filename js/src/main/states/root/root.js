@@ -22,8 +22,22 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	$scope.viewMode = 'thumbnails';
 
+	$scope.selectedIteration = null;
+
 	$scope.DesignExplorer = {
 		'typeDisplayDictionary': DesignExplorer.typeDisplayDictionary
+	};
+
+	/*
+	███████  ██████  ██████  ██████  ███████     ███████ ███    ██
+	██      ██      ██    ██ ██   ██ ██          ██      ████   ██
+	███████ ██      ██    ██ ██████  █████       █████   ██ ██  ██
+	     ██ ██      ██    ██ ██      ██          ██      ██  ██ ██
+	███████  ██████  ██████  ██      ███████     ██      ██   ████
+	*/
+
+	$scope.selectIteration = function (iteration) {
+		$scope.selectedIteration = iteration;
 	};
 
 

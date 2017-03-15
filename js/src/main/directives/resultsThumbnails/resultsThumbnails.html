@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-12">
-        <div ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy()" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
+        <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy()" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
 
             <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
               <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>

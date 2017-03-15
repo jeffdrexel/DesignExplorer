@@ -17,6 +17,7 @@ app.directive('animatedResults', function ($timeout) {
 			scope.curFrameInfo = null;
 			scope.$watch('filteredEntries', checkWhetherToAnimate);
 			scope.$watch('viewMode', checkWhetherToAnimate);
+			scope.$watch('selectedIteration', checkWhetherToAnimate);
 
 			var debounceNext;
 			var animateSpeed = 300;
@@ -34,7 +35,7 @@ app.directive('animatedResults', function ($timeout) {
 			 * Check whether we should move forward with animating or terminate a previous animation
 			 */
 			function checkWhetherToAnimate() {
-				if (!isAnimateMode()) {
+				if (!isAnimateMode() || scope.selectedIteration) {
 					cleanPreviousAnimation();
 				} else {
 					startNewAnimation();
@@ -69,7 +70,7 @@ app.directive('animatedResults', function ($timeout) {
 			 */
 			function animate() {
 				if (!isAnimateMode()) {
-					isAnimating=false;
+					isAnimating = false;
 					return;
 				} else {
 					showNextFrame();
@@ -93,26 +94,26 @@ app.directive('animatedResults', function ($timeout) {
 					.attr('src', scope.curFrameInfo.img);
 
 				var infoBox = $('#cur-frame-info');
+				var paramTypes = Object.keys(scope.designExplorer.params);
 
 				infoBox.html('');
 
-				Object.keys(scope.designExplorer.params)
-					.forEach(function (key) {
-						var type = DesignExplorer.typeDisplayDictionary[key];
-						var table = $('<table class="table table-condensed"></table>');
-						var params = scope.designExplorer.params[key];
-						params.forEach(function (param) {
-							var row = $('<tr></tr>');
-							row.append('<td>' + param.display + '</td>');
-							row.append('<td>' + scope.curFrameInfo[param[DesignExplorer.dataKey]] + '</td>');
-							table.append(row);
+				paramTypes.forEach(function (key) {
+					var type = DesignExplorer.typeDisplayDictionary[key];
+					var table = $('<table class="table table-condensed"></table>');
+					var params = scope.designExplorer.params[key];
+					params.forEach(function (param) {
+						var row = $('<tr></tr>');
+						row.append('<td>' + param.display + '</td>');
+						row.append('<td>' + scope.curFrameInfo[param[DesignExplorer.dataKey]] + '</td>');
+						table.append(row);
 
-							if (param === scope.designExplorer.selectedParam) row.css('border-left', '10px solid ' + scope.designExplorer.colorer(scope.curFrameInfo))
-								.css('font-weight', 'bold');
-						});
-						infoBox.append('<h4>' + type.display + 's</h4>');
-						infoBox.append(table);
+						if (param === scope.designExplorer.selectedParam) row.css('border-left', '5px solid ' + scope.designExplorer.colorer(scope.curFrameInfo))
+							.css('font-weight', 'bold');
 					});
+					infoBox.append('<h4>' + type.display + 's</h4>');
+					infoBox.append(table);
+				});
 
 				scope.designExplorer.graphs.parcoords.highlight([scope.curFrameInfo]);
 

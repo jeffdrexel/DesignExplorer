@@ -1,10 +1,15 @@
 <div id="main-content-flow">
     <div id="main" class="container-fluid">
         <div class="row">
-            <div class="col-xs-12">
+            <div ng-class="selectedIteration ? 'col-xs-3':'col-xs-12'">
                 <results-thumbnails ng-if="viewMode=='thumbnails'"></results-thumbnails>
                 <animated-results ng-show="viewMode=='animation'" id="animated-results-container"></animated-results>
             </div>
+
+            <div ng-if="selectedIteration" class="col-xs-9">
+                <selected-iteration></selected-iteration>
+            </div>
+
         </div>
     </div>
 </div>
