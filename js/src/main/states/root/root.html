@@ -1,16 +1,16 @@
 <div id="main-content-flow">
     <div id="main" class="container-fluid">
         <div class="row">
-            <div class="col-xs-9">
-                <results-thumbnails></results-thumbnails>
-                Sup
+            <div class="col-xs-12">
+                <results-thumbnails ng-if="viewMode=='thumbnails'"></results-thumbnails>
+                <animated-results ng-if="viewMode=='animation'" id="animated-results-container"></animated-results> 
             </div>
 
-            <div class="col-xs-3">
+            <!-- <div class="col-xs-3"> -->
 
-              <animated-results id="animated-results-container"></animated-results>
+              <!-- -->
                 <!-- <ui-view></ui-view> -->
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 </div>

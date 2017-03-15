@@ -10,16 +10,14 @@ var DesignExplorer = function (originalData) {
 
 	var data = [];
 
-	designExplorer.params = {
-		'in': [],
-		'out': []
-	};
+	// Dictionaried params
+	designExplorer.params = {};
+
+	// All params
+	designExplorer.paramsAll = [];
 
 	// Set later by setColorer
 	designExplorer.selectedParam = null;
-
-	// Parallel coordinate dimensions
-	designExplorer.paramsPC = {};
 
 	// All graphs namespace
 	designExplorer.graphs = {};
@@ -43,29 +41,28 @@ var DesignExplorer = function (originalData) {
 	██   ██ ██   ████  ██████  ██   ████
 	*/
 
-	function sortKeys(){
+	function sortKeys() {
 		// Initial Cleanup
 		var keys = d3.keys(originalData[0]);
 
 		// Populate which are input and output keys
 		keys.forEach(function (key) {
-			Object.keys(designExplorer.params)
+			Object.keys(DesignExplorer.typeDisplayDictionary)
 				.forEach(function (keyType) {
-					var signifier = DesignExplorer.getKeyTypeSignifier(keyType);
+					var type = DesignExplorer.typeDisplayDictionary[keyType];
+					var signifier = type.signifier;
 					var keyObj;
 					if (key.startsWith(signifier)) {
-						keyObj = {
-							'original': key,
-							'display:': key.substring(signifier.length, key.length)
-						};
+						keyObj=new DesignExplorer.Param(key,type);
+						designExplorer.paramsAll.push(keyObj);
+						designExplorer.params[keyType] = designExplorer.params[keyType] || [];
 						designExplorer.params[keyType].push(keyObj);
-						designExplorer.paramsPC[key] = {};
 					}
 				});
 		});
 	}
 
-	function cleanData(){
+	function cleanData() {
 		// clean data
 		originalData.forEach(function (datum, i) {
 			var cleanedDatum = {
@@ -74,8 +71,12 @@ var DesignExplorer = function (originalData) {
 
 			Object.keys(datum)
 				.forEach(function (key) {
+					var keyObj = designExplorer.paramsAll.reduce(function (prev, cur) {
+						return cur.original === key ? cur : prev;
+					}, null);
 					var floatVersion = parseFloat(datum[key]);
-					cleanedDatum[key] = isNaN(floatVersion) ? datum[key] : floatVersion;
+					var cleanKey = keyObj ? keyObj[DesignExplorer.dataKey] : key;
+					cleanedDatum[cleanKey] = isNaN(floatVersion) ? datum[key] : floatVersion;
 				});
 
 			data.push(cleanedDatum);
@@ -83,3 +84,5 @@ var DesignExplorer = function (originalData) {
 	}
 
 };
+
+DesignExplorer.dataKey='cleanKey';

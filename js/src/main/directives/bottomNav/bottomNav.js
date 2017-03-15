@@ -16,13 +16,13 @@ app.directive('bottomNav', function ($timeout) {
 
 				var bottombar = $('.bottom-nav');
 
-				bottombar.resizable({
-					handles: {
-						'n': '#handle'
-					}
-				});
-
-				bottombar.on('resize', respondToResize);
+				// bottombar.resizable({
+				// 	handles: {
+				// 		'n': '#handle'
+				// 	}
+				// });
+				//
+				// bottombar.on('resize', respondToResize);
 
 				$(window)
 					.on('resize', respondToResize);
@@ -34,9 +34,11 @@ app.directive('bottomNav', function ($timeout) {
 					var parallelDiv = $('#parallel-coords');
 
 					$('#main-content-flow')
-						.css('padding-bottom', bottombar.height());
-					parallelDiv.css('height', bottombar.height() - 30);
-					parallelDiv.css('width', bottombar.width() - 30);
+						.css('padding-bottom', bottombar.height()+150);
+
+
+					// parallelDiv.css('height', bottombar.height() - 30);
+					// parallelDiv.css('width', bottombar.width() - 30);
 					// if (scope.designExplorer) {
 					// 	scope.designExplorer.renderParallelCoordinates();
 					// }

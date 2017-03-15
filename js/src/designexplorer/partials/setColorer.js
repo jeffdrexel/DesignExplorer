@@ -20,8 +20,12 @@ DesignExplorer.prototype.setColorer = function (param) {
 		return colorScale(dataAccessor(d));
 	};
 
+	if(designExplorer.graphs.parcoords) {
+		designExplorer.graphs.parcoords.color(designExplorer.colorer).render();
+	}
+
 	function dataAccessor(d) {
-		return d[param.original];
+		return d[param[DesignExplorer.dataKey]];
 	}
 
 };

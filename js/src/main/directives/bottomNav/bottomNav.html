@@ -1,30 +1,28 @@
 <div class="bottom-nav">
-    <div id="handle" class="ui-resizable-handle ui-resizable-n"></div>
+
+    <!-- <div id="handle" class="ui-resizable-handle ui-resizable-n"></div> -->
     <div class="container-fluid bottom-nav-content">
-        <div class="row">
-            <!-- <div class="col-xs-3">
-
-        <h4>Inputs</h4>
-        <ul>
-          <li ng-repeat="input in designExplorer.params.in">
-            {{input}}
-          </li>
-        </ul>
-
-        <h4>Outputs</h4>
-        <ul>
-          <li ng-repeat="output in designExplorer.params.out">
-            {{output}}
-          </li>
-        </ul>
-      </div> -->
-
-            <!-- <div class="col-xs-9">
-
-      </div> -->
-        </div>
-
         <div id="parallel-coords" style="min-height:250px"></div>
     </div>
+
+    <div class="bottom-nav-flyout">
+        <div id="bottom-flyout" class="collapse bottom-nav-flyout-content">
+            <div ng-repeat="type in DesignExplorer.typeDisplayDictionary">
+                <h4>{{type.display}}s</h4>
+                <table>
+
+                    <tr ng-repeat="param in designExplorer.params[type.key]">
+                        <td>
+                            {{param.display}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <button class="bottom-nav-flyout-toggle btn btn-sm btn-default" data-toggle="collapse" data-target="#bottom-flyout"><i class="fa fa-bars"></i></button>
+    </div>
+
+
 
 </div>
