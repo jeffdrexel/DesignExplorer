@@ -4,7 +4,7 @@
  * @name bottomNav
  * @param {service}
  * @description
- *   Navbar. Doesn't really do anything interesting yet.
+ *   Resizable bottom navigation
  */
 app.directive('bottomNav', function ($timeout) {
 	return {
@@ -22,12 +22,24 @@ app.directive('bottomNav', function ($timeout) {
 					}
 				});
 
-				bottombar.on('resize', resizeMainContent);
+				bottombar.on('resize', respondToResize);
 
-				resizeMainContent();
+				$(window)
+					.on('resize', respondToResize);
 
-				function resizeMainContent(){
-					$('#main-content-flow').css('padding-bottom',bottombar.height());
+				respondToResize();
+
+				function respondToResize() {
+
+					var parallelDiv = $('#parallel-coords');
+
+					$('#main-content-flow')
+						.css('padding-bottom', bottombar.height());
+					parallelDiv.css('height', bottombar.height() - 30);
+					parallelDiv.css('width', bottombar.width() - 30);
+					// if (scope.designExplorer) {
+					// 	scope.designExplorer.renderParallelCoordinates();
+					// }
 				}
 			});
 		}

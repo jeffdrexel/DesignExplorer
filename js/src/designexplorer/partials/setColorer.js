@@ -1,3 +1,7 @@
+/**
+ * Tell us which param to color by
+ * @param {object} param - Parameter
+ */
 DesignExplorer.prototype.setColorer = function (param) {
 
 	var designExplorer = this;
@@ -10,7 +14,7 @@ DesignExplorer.prototype.setColorer = function (param) {
 
 	var colorScale = d3.scale.linear()
 		.domain(extents)
-		.range(["#3b31b0", "#66CCDD"])
+		.range(["#3b31b0", "#66CCDD"]);
 
 	designExplorer.colorer = function (d) {
 		return colorScale(dataAccessor(d));
@@ -18,6 +22,6 @@ DesignExplorer.prototype.setColorer = function (param) {
 
 	function dataAccessor(d) {
 		return d[param.original];
-	};
+	}
 
 };

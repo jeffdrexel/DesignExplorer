@@ -2,11 +2,13 @@ DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 
 	var designExplorer = this;
 
-	$(divSelector)
-		.html('');
+	designExplorer.graphs._parcoordsDivSelector = divSelector;
 
-	$(divSelector)
-		.addClass('parcoords');
+	var div = $(divSelector);
+
+	div.html('');
+
+	div.addClass('parcoords');
 
 	designExplorer.graphs.parcoords = d3.parcoords()(divSelector)
 		.data(designExplorer.getData())
@@ -25,6 +27,13 @@ DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 		.dimensions(designExplorer.paramsPC)
 		.render()
 		.brushMode("1D-axes") // enable brushing
+		.autoscale()
 		.interactive()
 		.reorderable();
+
+		// resize or re-render breaks the brush mode
+	// $(window)
+	// 	.on('resize', function () {
+	// 		designExplorer.graphs.parcoords.width(div.width());
+	// 	});
 };

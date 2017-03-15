@@ -32,12 +32,6 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	$scope.$watch('designExplorer', drawDesignExplorer);
 
-	$(window)
-		.on('resize', function () {
-			// change height and stuff?
-			if ($scope.designExplorer && $scope.designExplorer.graphs.parcoords) $scope.designExplorer.graphs.parcoords.render();
-		});
-
 
 	/*
 	 █████  ███    ██  ██████  ███    ██
