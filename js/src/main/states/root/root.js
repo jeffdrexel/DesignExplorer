@@ -45,8 +45,12 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	$scope.selectIteration = function (iteration) {
 		$scope.resultMode = 'image';
 		$scope.selectedIteration = iteration;
+		if(!iteration) return;
 		$scope.designExplorer.populateIterationTable($('#selected-iteration-info'),iteration);
-		$scope.designExplorer.graphs.parcoords.highlight([iteration]);
+		$scope.designExplorer.graphs.parcoords.clear('highlight');
+		$timeout(function(){
+			$scope.designExplorer.graphs.parcoords.highlight([iteration]);
+		});		
 	};
 
 	$scope.set2dMode = function () {
@@ -98,6 +102,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	function setFilteredEntries(entries) {
 		$scope.filteredEntries = entries || $scope.designExplorer.getData();
+		$scope.selectIteration(null);
 		$timeout(function () {
 			$scope.$apply();
 		});

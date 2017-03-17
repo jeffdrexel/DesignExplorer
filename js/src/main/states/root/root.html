@@ -7,12 +7,8 @@
 
         <div class="main-constrained one-result" ng-show="selectedIteration" style="width:79%">
             <selected-iteration ng-show="resultMode=='image'"></selected-iteration>
-            <div id="spectacles-container" class="spectacles-content" ng-show="resultMode=='3d'">
-
-            </div>
-            <div id="selected-iteration-info">
-              
-            </div>
+            <div id="spectacles-container" class="spectacles-content" ng-show="resultMode=='3d'"></div>
+            <div id="selected-iteration-info"></div>
         </div>
 
         <div class="one-result-toolbar" ng-if="selectedIteration" style="width:79%">
@@ -20,6 +16,7 @@
                 <div class="btn-group btn-group-sm" role="group" aria-label="...">
                     <button type="button" class="btn" ng-class="{'btn-success':resultMode=='image'}" ng-click="set2dMode()"><i class="fa fa-file-image-o"></i> 2D</button>
                     <button type="button" class="btn" ng-class="{'btn-success':resultMode=='3d'}" ng-click="set3dMode()"><i class="fa fa-cube"></i> 3D</button>
+                    <button type="button" class="btn btn-danger" ng-click="selectIteration(null)"><i class="fa fa-times"></i> deselect</button>
                     <!-- <button type="button" class="btn btn-default">Right</button> -->
                 </div>
                 <!-- <div class="btn-group btn-group-sm" role="group" aria-label="...">...</div>
