@@ -1,7 +1,17 @@
 <div id="main-content-flow">
-    <div id="main" class="container-fluid">
-        <div class="row">
-            <div ng-class="selectedIteration ? 'col-xs-3':'col-xs-12'">
+    <div id="main">
+        <div class="main-constrained" style="width:20%">
+            <results-thumbnails ng-if="viewMode=='thumbnails'"></results-thumbnails>
+            <animated-results ng-show="viewMode=='animation'" id="animated-results-container"></animated-results>
+        </div>
+        <div class="main-constrained one-result" ng-if="selectedIteration" style="width:79%">
+            <selected-iteration></selected-iteration>
+        </div>
+    </div>
+
+    <!-- <div id="main" class="container-fluid">
+        <div class="row scrollable-100">
+            <div class="scrollable-100" ng-class="selectedIteration ? 'col-xs-3':'col-xs-12'">
                 <results-thumbnails ng-if="viewMode=='thumbnails'"></results-thumbnails>
                 <animated-results ng-show="viewMode=='animation'" id="animated-results-container"></animated-results>
             </div>
@@ -11,7 +21,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 </div>
 
 <navbar></navbar>

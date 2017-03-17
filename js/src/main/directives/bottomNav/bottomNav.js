@@ -33,8 +33,11 @@ app.directive('bottomNav', function ($timeout) {
 
 					var parallelDiv = $('#parallel-coords');
 
+					// $('#main-content-flow')
+					// 	.css('padding-bottom', bottombar.height()+150);
+
 					$('#main-content-flow')
-						.css('padding-bottom', bottombar.height()+150);
+						.css('max-height', ($(window.top).height()-bottombar.outerHeight()-130)+'px');
 
 
 					// parallelDiv.css('height', bottombar.height() - 30);

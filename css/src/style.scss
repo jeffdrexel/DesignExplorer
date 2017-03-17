@@ -2,7 +2,6 @@
 @import "./lib/themes/sandstone/variables";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "./lib/themes/sandstone/bootswatch";
-
 @import "./bottom-nav";
 @import "./navbar";
 @import "./parcoords";
@@ -15,11 +14,37 @@ html {
 }
 
 a {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #main-content-flow {
-    padding-top: $navbar-height+$navbar-height+$grid-gutter-width;
+    overflow-y: auto;
+    width: 100%;
+    position: fixed;
+    top: 130px;
+    height: 100%;
+
+    #main,
+    .main-constrained{
+        position: absolute;
+        top: 0;
+        height: 100%;
+        max-height: 100%;
+    }
+
+    #main {
+        width: 100%;
+    }
+
+    .main-constrained{
+        padding: $grid-gutter-width/2;
+        overflow-y: auto;
+    }
+
+    .one-result {
+        overflow-y: auto;
+        right: 0;
+    }
 }
 
 .full-screen {
