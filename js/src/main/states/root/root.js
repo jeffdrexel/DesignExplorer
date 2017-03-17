@@ -15,6 +15,8 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	var designExplorer;
 
+	var spect;
+
 	d3.csv("design_explorer_data/kpf/20160811_DataTable_Formatted.csv")
 		.get(function (error, rows) {
 			$scope.designExplorer = new DesignExplorer(rows);
@@ -28,6 +30,10 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 		'typeDisplayDictionary': DesignExplorer.typeDisplayDictionary
 	};
 
+	$timeout(function () {
+		spect = new SPECTACLES($('#spectacles-container'));
+	});
+
 	/*
 	███████  ██████  ██████  ██████  ███████     ███████ ███    ██
 	██      ██      ██    ██ ██   ██ ██          ██      ████   ██
@@ -37,7 +43,26 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	*/
 
 	$scope.selectIteration = function (iteration) {
+		$scope.resultMode = 'image';
 		$scope.selectedIteration = iteration;
+		$scope.designExplorer.populateIterationTable($('#selected-iteration-info'),iteration);
+		$scope.designExplorer.graphs.parcoords.highlight([iteration]);
+	};
+
+	$scope.set2dMode = function () {
+		$scope.resultMode = 'image';
+	};
+
+	$scope.set3dMode = function () {
+		if (!$scope.selectedIteration) return;
+		$scope.resultMode = '3d';
+		d3.json($scope.selectedIteration.threeD, function (data) {
+			spect.loadNewModel(data);
+		});
+		$timeout(function () {
+			$('#spectacles-container')
+				.trigger('resize');
+		});
 	};
 
 

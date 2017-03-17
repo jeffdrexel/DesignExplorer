@@ -1,4 +1,16 @@
 <div class="row">
+  <div class="col-xs-12" ng-if="selectedIteration">
+    <h3>Selected:</h3>
+    <small ng-switch="selectedIteration[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(selectedIteration)}}">
+      <span ng-switch-when="number">{{selectedIteration[getOrderBy()] | number}}</span>
+      <span ng-switch-default>{{selectedIteration[getOrderBy()]}}</span>
+    </small>
+    <div style="border:3px solid {{designExplorer.colorer(selectedIteration)}}">
+      <img class="img-responsive" ng-src="{{selectedIteration.img}}" />
+    </div>
+
+    <hr />
+  </div>
     <div class="col-xs-12">
         <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy()" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
 
@@ -7,9 +19,8 @@
               <span ng-switch-default>{{result[getOrderBy()]}}</span>
             </small>
 
-
             </small>
-            <img class="img-responsive img-circle" ng-src="{{result.img}}" />
+            <img class="img-responsive" ng-src="{{result.img}}" />
         </div>
     </div>
 </div>

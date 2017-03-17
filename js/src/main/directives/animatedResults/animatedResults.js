@@ -94,26 +94,8 @@ app.directive('animatedResults', function ($timeout) {
 					.attr('src', scope.curFrameInfo.img);
 
 				var infoBox = $('#cur-frame-info');
-				var paramTypes = Object.keys(scope.designExplorer.params);
 
-				infoBox.html('');
-
-				paramTypes.forEach(function (key) {
-					var type = DesignExplorer.typeDisplayDictionary[key];
-					var table = $('<table class="table table-condensed"></table>');
-					var params = scope.designExplorer.params[key];
-					params.forEach(function (param) {
-						var row = $('<tr></tr>');
-						row.append('<td>' + param.display + '</td>');
-						row.append('<td>' + scope.curFrameInfo[param[DesignExplorer.dataKey]] + '</td>');
-						table.append(row);
-
-						if (param === scope.designExplorer.selectedParam) row.css('border-left', '5px solid ' + scope.designExplorer.colorer(scope.curFrameInfo))
-							.css('font-weight', 'bold');
-					});
-					infoBox.append('<h4>' + type.display + 's</h4>');
-					infoBox.append(table);
-				});
+				scope.designExplorer.populateIterationTable(infoBox,scope.curFrameInfo);
 
 				scope.designExplorer.graphs.parcoords.highlight([scope.curFrameInfo]);
 
