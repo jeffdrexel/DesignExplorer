@@ -93,9 +93,18 @@ app.directive('animatedResults', function ($timeout) {
 				$('#animated-results')
 					.attr('src', scope.curFrameInfo.img);
 
+				$('#animated-results')
+					.on('click', function () {
+						cleanPreviousAnimation();
+						scope.viewMode='thumbnails';
+						$timeout(function(){
+							scope.selectIteration(scope.curFrameInfo);
+						});
+					});
+
 				var infoBox = $('#cur-frame-info');
 
-				scope.designExplorer.populateIterationTable(infoBox,scope.curFrameInfo);
+				scope.designExplorer.populateIterationTable(infoBox, scope.curFrameInfo);
 
 				scope.designExplorer.graphs.parcoords.highlight([scope.curFrameInfo]);
 
