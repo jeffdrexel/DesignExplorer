@@ -45,12 +45,12 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	$scope.selectIteration = function (iteration) {
 		$scope.resultMode = 'image';
 		$scope.selectedIteration = iteration;
-		if(!iteration) return;
-		$scope.designExplorer.populateIterationTable($('#selected-iteration-info'),iteration);
+		if (!iteration) return;
+		$scope.designExplorer.populateIterationTable($('#selected-iteration-info'), iteration);
 		$scope.designExplorer.graphs.parcoords.clear('highlight');
-		$timeout(function(){
+		$timeout(function () {
 			$scope.designExplorer.graphs.parcoords.highlight([iteration]);
-		});		
+		});
 	};
 
 	$scope.set2dMode = function () {
@@ -82,6 +82,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	$scope.$watch('designExplorer', drawDesignExplorer);
 
 
+
 	/*
 	 █████  ███    ██  ██████  ███    ██
 	██   ██ ████   ██ ██    ██ ████   ██
@@ -94,14 +95,15 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 		$timeout(function () {
 			if ($scope.designExplorer) {
 				$scope.designExplorer.parcoords_create('#parallel-coords');
-				$scope.designExplorer.graphs.parcoords.on('brush', setFilteredEntries);
 				setFilteredEntries();
 			}
+
+			$scope.designExplorer.abstract_parcoords_postRender = setFilteredEntries;
 		});
 	}
 
-	function setFilteredEntries(entries) {
-		$scope.filteredEntries = entries || $scope.designExplorer.getData();
+	function setFilteredEntries() {
+		$scope.filteredEntries = $scope.designExplorer.graphs.parcoords.brushed() || $scope.designExplorer.getData();
 		$scope.selectIteration(null);
 		$timeout(function () {
 			$scope.$apply();
