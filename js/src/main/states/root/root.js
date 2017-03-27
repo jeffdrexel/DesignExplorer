@@ -17,6 +17,8 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	var spect;
 
+	var isFullscreen = false;
+
 	d3.csv("design_explorer_data/kpf/20160811_DataTable_Formatted.csv")
 		.get(function (error, rows) {
 			$scope.designExplorer = new DesignExplorer(rows);
@@ -67,6 +69,25 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 			$('#spectacles-container')
 				.trigger('resize');
 		});
+	};
+
+	$scope.toggleFullscreen = function () {
+
+		var div = $('#selected-result');
+		var otherDivs = $('.hide-in-fullscreen');
+
+		if (!isFullscreen) {
+			div.addClass('full-screen');
+			otherDivs.hide();
+		} else {
+			div.removeClass('full-screen');
+			otherDivs.show();
+		}
+
+		$('#spectacles-container')
+			.trigger('resize');
+
+		isFullscreen = !isFullscreen;
 	};
 
 

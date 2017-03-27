@@ -16,13 +16,6 @@ DesignExplorer.prototype.parcoords_create = function (divSelector) {
 
 	designExplorer.graphs.parcoords = d3.parcoords()(divSelector)
 		.data(designExplorer.getData())
-		// .margin({
-		// 	top: 50,
-		// 	left: 20,
-		// 	bottom: 10,
-		// 	right: 20
-		// })
-		// .smoothness(0.2)
 		.color(designExplorer.colorer)
 		.alpha(0.2)
 		.alphaOnBrushed(0.05)
