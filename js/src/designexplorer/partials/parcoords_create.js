@@ -75,11 +75,11 @@ DesignExplorer.prototype.parcoords_create = function (divSelector) {
 						contextMenu.css('left', d3.event.clientX);
 						contextMenu.css('top', d3.event.clientY);
 
-						var lg=$('<ul class="list-group"></ul>');
+						var lg = $('<ul class="list-group"></ul>');
 
-						var resetBrush=$('<a class="list-group-item">Reset extents</a>');
+						var resetBrush = $('<a class="list-group-item">Reset these extents</a>');
 
-						resetBrush.on('click',function(){
+						resetBrush.on('click', function () {
 							designExplorer.graphs.parcoords.brushReset(d);
 						});
 
@@ -88,7 +88,7 @@ DesignExplorer.prototype.parcoords_create = function (divSelector) {
 
 						contextMenu.show();
 
-						lg.on('click',function(){
+						lg.on('click', function () {
 							contextMenu.hide();
 						});
 
