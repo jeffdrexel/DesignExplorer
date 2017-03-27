@@ -8,5 +8,10 @@ DesignExplorer.typeDisplayDictionary={
     'signifier': 'out:',
     'key': 'out',
     'display':'Output'
-  }
+  },
+  'custom':{
+    'signifier': 'custom:',
+    'key': 'custom',
+    'display':'Custom Output'
+  },
 };

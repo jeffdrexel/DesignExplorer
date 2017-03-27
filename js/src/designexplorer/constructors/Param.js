@@ -12,4 +12,6 @@ DesignExplorer.Param = function (key, type) {
 		.replace(']', '_');
 
 	param.shownInParcoords = true;
+
+	return this;
 };

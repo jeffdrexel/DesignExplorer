@@ -11,7 +11,9 @@ var DesignExplorer = function (originalData) {
 	var data = [];
 
 	// Dictionaried params
-	designExplorer.params = {};
+	designExplorer.params = {
+		'custom':[]
+	};
 
 	// All params
 	designExplorer.paramsAll = [];
@@ -53,7 +55,7 @@ var DesignExplorer = function (originalData) {
 					var signifier = type.signifier;
 					var keyObj;
 					if (key.startsWith(signifier)) {
-						keyObj=new DesignExplorer.Param(key,type);
+						keyObj = new DesignExplorer.Param(key, type);
 						designExplorer.paramsAll.push(keyObj);
 						designExplorer.params[keyType] = designExplorer.params[keyType] || [];
 						designExplorer.params[keyType].push(keyObj);
@@ -85,4 +87,4 @@ var DesignExplorer = function (originalData) {
 
 };
 
-DesignExplorer.dataKey='cleanKey';
+DesignExplorer.dataKey = 'cleanKey';
