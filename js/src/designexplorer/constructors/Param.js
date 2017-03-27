@@ -11,5 +11,5 @@ DesignExplorer.Param = function (key, type) {
 		.replace('[', '_')
 		.replace(']', '_');
 
-	param.shownInParacoords = true;
+	param.shownInParcoords = true;
 };

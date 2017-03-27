@@ -12,7 +12,9 @@ app.directive('bottomNav', function ($timeout) {
 		templateUrl: 'js/src/main/directives/bottomNav/bottomNav.html',
 		link: function (scope) {
 
-			$timeout(function () {
+			$timeout(initJquery);
+
+			function initJquery() {
 
 				var bottombar = $('.bottom-nav');
 
@@ -37,7 +39,8 @@ app.directive('bottomNav', function ($timeout) {
 					// 	.css('padding-bottom', bottombar.height()+150);
 
 					$('#main-content-flow')
-						.css('max-height', ($(window.top).height()-bottombar.outerHeight()-130)+'px');
+						.css('max-height', ($(window.top)
+							.height() - bottombar.outerHeight() - 130) + 'px');
 
 
 					// parallelDiv.css('height', bottombar.height() - 30);
@@ -46,7 +49,7 @@ app.directive('bottomNav', function ($timeout) {
 					// 	scope.designExplorer.renderParallelCoordinates();
 					// }
 				}
-			});
+			}
 		}
 	};
 });

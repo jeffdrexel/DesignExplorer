@@ -1,4 +1,4 @@
-DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
+DesignExplorer.prototype.parcoords_create = function (divSelector) {
 
 	var designExplorer = this;
 
@@ -10,10 +10,7 @@ DesignExplorer.prototype.drawParallelCoordinates = function (divSelector) {
 
 	div.addClass('parcoords');
 
-	var dimensions = designExplorer.paramsAll.reduce(function (prev, cur) {
-		prev[cur[DesignExplorer.dataKey]] = {};
-		return prev;
-	}, {});
+	var dimensions=designExplorer.parcoords_getCurDims();
 
 	designExplorer.graphs.parcoords = d3.parcoords()(divSelector)
 		.data(designExplorer.getData())

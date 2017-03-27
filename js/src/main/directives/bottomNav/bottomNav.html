@@ -10,10 +10,12 @@
             <div ng-repeat="type in DesignExplorer.typeDisplayDictionary">
                 <h4>{{type.display}}s</h4>
                 <table>
-
                     <tr ng-repeat="param in designExplorer.params[type.key]">
                         <td>
-                            {{param.display}}
+                            <label ng-click="designExplorer.parcoords_redraw()">
+                                <input type="checkbox" ng-model="param.shownInParcoords" />
+                                {{param.display}}
+                            </label>
                         </td>
                     </tr>
                 </table>

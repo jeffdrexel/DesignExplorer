@@ -93,7 +93,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	function drawDesignExplorer() {
 		$timeout(function () {
 			if ($scope.designExplorer) {
-				$scope.designExplorer.drawParallelCoordinates('#parallel-coords');
+				$scope.designExplorer.parcoords_create('#parallel-coords');
 				$scope.designExplorer.graphs.parcoords.on('brush', setFilteredEntries);
 				setFilteredEntries();
 			}
