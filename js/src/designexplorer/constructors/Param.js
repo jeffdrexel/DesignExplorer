@@ -7,15 +7,7 @@ DesignExplorer.Param = function (key, type) {
 
 	param.type = type;
 
-	param.cleanKey = key.replace(':', '_')
-		.replace('[', '_')
-		.replace(']', '_')
-		.replace(' ', '_')
-		.replace(' ', '_');
-
-	// param.cleanKey=key.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~]/g, '_');
-
-	// console.log(key, param.cleanKey);
+	param.cleanKey = key.replace(/[^a-zA-Z0-9]/g, '_');
 
 	param.shownInParcoords = true;
 
