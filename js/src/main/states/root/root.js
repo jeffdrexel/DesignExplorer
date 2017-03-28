@@ -19,7 +19,8 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 
 	var isFullscreen = false;
 
-	d3.csv("design_explorer_data/kpf/20160811_DataTable_Formatted.csv")
+	// d3.csv("design_explorer_data/kpf/20160811_DataTable_Formatted.csv")
+	d3.csv("design_explorer_data/kpf/DataTable_0_413.csv")
 		.get(function (error, rows) {
 			$scope.designExplorer = new DesignExplorer(rows);
 		});
@@ -64,6 +65,9 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 		$scope.resultMode = '3d';
 		d3.json($scope.selectedIteration.threeD, function (data) {
 			spect.loadNewModel(data);
+			spect.zoomExtents();
+			spect.lightingRig.setAmbientLightColor('#888');
+			spect.lightingRig.setPointLightsColor('#888');
 		});
 		$timeout(function () {
 			$('#spectacles-container')

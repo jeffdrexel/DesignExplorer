@@ -1815,7 +1815,8 @@ var update_sc_colorsOnly;
 		} else {
 			// load default data
 			//parse the csv data from the design_explorer_data folder
-			d3.csv("/design_explorer_data/default_onload.csv", loadDataToDesignExplorer);
+			// d3.csv("/design_explorer_data/default_onload.csv", loadDataToDesignExplorer);
+			d3.csv("design_explorer_data/kpf/DataTable_0_413.csv", loadDataToDesignExplorer);
 
 		}
 
