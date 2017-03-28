@@ -121,9 +121,8 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 			if ($scope.designExplorer) {
 				$scope.designExplorer.parcoords_create('#parallel-coords');
 				setFilteredEntries();
+				$scope.designExplorer.abstract_parcoords_postRender = setFilteredEntries;
 			}
-
-			$scope.designExplorer.abstract_parcoords_postRender = setFilteredEntries;
 		});
 	}
 

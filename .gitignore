@@ -8,3 +8,4 @@ node_modules
 npm-debug.log
 design_explorer_data/kpf/Json
 design_explorer_data/kpfbkup/Json
+.secrets
