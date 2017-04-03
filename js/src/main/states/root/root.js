@@ -94,6 +94,36 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 		isFullscreen = !isFullscreen;
 	};
 
+	$scope.resizeThumbnails=function(){
+		if(!$scope.filteredEntries)return;
+		var flow=$('#main-content-flow');
+		var ratio=Math.ceil(flow.width()/flow.height());
+
+		console.log('ratio',ratio);
+
+		var colCount=getColumnCount(ratio,$scope.filteredEntries.length);
+
+		var size=Math.floor(flow.width()/colCount);
+		var paddingSize=24;
+
+		var resultThumbnails=$('.result-image');
+		resultThumbnails.css('width',size-paddingSize+'px');
+
+		function getColumnCount(ratio,numItems){
+			var maxCols=12+1;
+			var columns=0;
+			var itemCapacity=0;
+
+			while(itemCapacity<numItems && columns<maxCols){
+				itemCapacity=columns*ratio;
+				columns+=1;
+			}
+
+			return Math.max(1,columns+1);
+
+		}
+	};
+
 
 
 	/*
@@ -131,6 +161,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 		$scope.selectIteration(null);
 		$timeout(function () {
 			$scope.$apply();
+			$scope.resizeThumbnails();
 		});
 	}
 

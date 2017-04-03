@@ -11,16 +11,17 @@
 
     <hr />
   </div>
-    <div class="col-xs-12">
-        <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy()" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
+    <div class="col-xs-12" style="text-align: center;">
+          <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy()" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
 
-            <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
-              <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
-              <span ng-switch-default>{{result[getOrderBy()]}}</span>
-            </small>
+              <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
+                <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
+                <span ng-switch-default>{{result[getOrderBy()]}}</span>
+              </small>
 
-            </small>
-            <img class="img-responsive" ng-src="{{result.img}}" />
-        </div>
+              </small>
+              <img class="img-responsive" ng-src="{{result.img}}" />
+          </div>
+
     </div>
 </div>

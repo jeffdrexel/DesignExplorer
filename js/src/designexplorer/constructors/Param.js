@@ -7,7 +7,7 @@ DesignExplorer.Param = function (key, type) {
 
 	param.type = type;
 
-	param.cleanKey = key.replace(/[^\w]/g, '_');
+	param.cleanKey = key.replace(/[\W]/g, '_');
 
 	param.shownInParcoords = true;
 

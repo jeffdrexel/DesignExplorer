@@ -48,6 +48,8 @@ app.directive('bottomNav', function ($timeout) {
 					// if (scope.designExplorer) {
 					// 	scope.designExplorer.renderParallelCoordinates();
 					// }
+
+					scope.resizeThumbnails();
 				}
 			}
 		}
