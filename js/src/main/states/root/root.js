@@ -20,7 +20,8 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout) {
 	var isFullscreen = false;
 
 	// d3.csv("design_explorer_data/kpf/20160811_DataTable_Formatted.csv")
-	d3.csv("design_explorer_data/kpf/DataTable_0_413.csv")
+	// d3.csv("design_explorer_data/kpf/DataTable_0_413.csv")
+	d3.csv("design_explorer_data/kpf/EastMidtownParamSpace.csv")
 		.get(function (error, rows) {
 			$scope.designExplorer = new DesignExplorer(rows);
 		});

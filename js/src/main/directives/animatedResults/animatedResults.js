@@ -12,9 +12,12 @@ app.directive('animatedResults', function ($timeout) {
 		templateUrl: 'js/src/main/directives/animatedResults/animatedResults.html',
 		link: function (scope) {
 
-			scope.curFrame = 0;
-			scope.frames = 0;
-			scope.curFrameInfo = null;
+			scope.animatedResults={
+				curFrame:0,
+				frames:0,
+				curFrameInfo:null
+			};
+
 			scope.$watch('filteredEntries', checkWhetherToAnimate);
 			scope.$watch('viewMode', checkWhetherToAnimate);
 			scope.$watch('selectedIteration', checkWhetherToAnimate);
@@ -54,10 +57,10 @@ app.directive('animatedResults', function ($timeout) {
 						.html('');
 				}
 
-				scope.curFrame = 0;
-				scope.frames = scope.filteredEntries.length;
+				scope.animatedResults.curFrame = 0;
+				scope.animatedResults.frames = scope.filteredEntries.length;
 
-				var newAnimateSpeed = Math.max(100000 / scope.frames, 300); // min debounce time
+				var newAnimateSpeed = Math.max(100000 / scope.animatedResults.frames, 300); // min debounce time
 				newAnimateSpeed = Math.min(newAnimateSpeed, 1500); // max debounce time
 				animateSpeed = newAnimateSpeed;
 
@@ -88,28 +91,28 @@ app.directive('animatedResults', function ($timeout) {
 				cleanPreviousAnimation();
 
 				if (!scope.filteredEntries || !scope.filteredEntries.length) return;
-				scope.curFrameInfo = scope.filteredEntries[scope.curFrame];
+				scope.animatedResults.curFrameInfo = scope.filteredEntries[scope.animatedResults.curFrame];
 
 				$('#animated-results')
-					.attr('src', scope.curFrameInfo.img);
+					.attr('src', scope.animatedResults.curFrameInfo.img);
 
 				$('#animated-results')
 					.on('click', function () {
 						cleanPreviousAnimation();
 						scope.viewMode='thumbnails';
 						$timeout(function(){
-							scope.selectIteration(scope.curFrameInfo);
+							scope.selectIteration(scope.animatedResults.curFrameInfo);
 						});
 					});
 
 				var infoBox = $('#cur-frame-info');
 
-				scope.designExplorer.populateIterationTable(infoBox, scope.curFrameInfo);
+				scope.designExplorer.populateIterationTable(infoBox, scope.animatedResults.curFrameInfo);
 
-				scope.designExplorer.graphs.parcoords.highlight([scope.curFrameInfo]);
+				scope.designExplorer.graphs.parcoords.highlight([scope.animatedResults.curFrameInfo]);
 
-				scope.curFrame += 1;
-				if (scope.curFrame >= scope.frames) scope.curFrame = 0;
+				scope.animatedResults.curFrame += 1;
+				if (scope.animatedResults.curFrame >= scope.animatedResults.frames) scope.animatedResults.curFrame = 0;
 			}
 
 			/**

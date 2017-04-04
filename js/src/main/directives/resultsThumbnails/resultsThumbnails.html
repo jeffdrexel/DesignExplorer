@@ -6,7 +6,7 @@
       <span ng-switch-default>{{selectedIteration[getOrderBy()]}}</span>
     </small>
     <div style="border:3px solid {{designExplorer.colorer(selectedIteration)}}">
-      <img class="img-responsive" ng-src="{{selectedIteration.img}}" />
+      <img class="img-responsive" ng-src="{{selectedIteration.imgThumb}}" />
     </div>
 
     <hr />
@@ -20,7 +20,7 @@
               </small>
 
               </small>
-              <img class="img-responsive" ng-src="{{result.img}}" />
+              <img class="img-responsive" ng-src="{{result.imgThumb}}" />
           </div>
 
     </div>

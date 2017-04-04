@@ -81,6 +81,10 @@ var DesignExplorer = function (originalData) {
 					cleanedDatum[cleanKey] = isNaN(floatVersion) ? datum[key] : floatVersion;
 				});
 
+				if(cleanedDatum.img){
+					cleanedDatum.imgThumb=cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1');
+				}
+
 			data.push(cleanedDatum);
 		});
 	}
