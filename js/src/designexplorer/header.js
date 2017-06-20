@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-var DesignExplorer = function (originalData) {
+var DesignExplorer = function (originalData, options) {
 
 	/**
 	 * @lends DesignExplorer.prototype
@@ -10,9 +10,13 @@ var DesignExplorer = function (originalData) {
 
 	var data = [];
 
+	var options = options || {
+		'hiddenKeys': []
+	};
+
 	// Dictionaried params
 	designExplorer.params = {
-		'custom':[]
+		'custom': []
 	};
 
 	// All params
@@ -56,6 +60,7 @@ var DesignExplorer = function (originalData) {
 					var keyObj;
 					if (key.startsWith(signifier)) {
 						keyObj = new DesignExplorer.Param(key, type);
+						if (options.hiddenKeys.indexOf(key) !== -1) keyObj.shownInParcoords = false;
 						designExplorer.paramsAll.push(keyObj);
 						designExplorer.params[keyType] = designExplorer.params[keyType] || [];
 						designExplorer.params[keyType].push(keyObj);
@@ -81,9 +86,9 @@ var DesignExplorer = function (originalData) {
 					cleanedDatum[cleanKey] = isNaN(floatVersion) ? datum[key] : floatVersion;
 				});
 
-				if(cleanedDatum.img){
-					cleanedDatum.imgThumb=cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1');
-				}
+			if (cleanedDatum.img) {
+				cleanedDatum.imgThumb = cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1');
+			}
 
 			data.push(cleanedDatum);
 		});

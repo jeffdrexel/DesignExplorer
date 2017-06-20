@@ -11,5 +11,7 @@ DesignExplorer.Param = function (key, type) {
 
 	param.shownInParcoords = true;
 
+	param.curExtents = [];
+
 	return this;
 };

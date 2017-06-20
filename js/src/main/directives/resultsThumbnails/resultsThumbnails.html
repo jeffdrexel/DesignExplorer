@@ -23,5 +23,16 @@
               <img class="img-responsive" ng-src="{{result.imgThumb}}" />
           </div>
 
+          <!-- <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo:10" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
+
+              <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
+                <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
+                <span ng-switch-default>{{result[getOrderBy()]}}</span>
+              </small>
+
+              </small>
+              <img class="img-responsive" ng-src="{{result.imgThumb}}" />
+          </div> -->
+
     </div>
 </div>

@@ -10,7 +10,7 @@ DesignExplorer.prototype.populateIterationTable = function (jqElement, iteration
 		var table = $('<table class="table table-condensed"></table>');
 		var params = designExplorer.params[key];
 		params.forEach(function (param) {
-			if (!param.shownInParcoords) return;
+			// if (!param.shownInParcoords) return;
 			var row = $('<tr></tr>');
 			row.append('<td>' + param.display + '</td>');
 			row.append('<td>' + iteration[param[DesignExplorer.dataKey]] + '</td>');
