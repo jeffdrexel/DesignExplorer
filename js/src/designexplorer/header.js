@@ -1,7 +1,7 @@
 /**
  * @constructor
  */
-var DesignExplorer = function (originalData, options) {
+var DesignExplorer = function (originalData, incomingOptions) {
 
 	/**
 	 * @lends DesignExplorer.prototype
@@ -10,7 +10,7 @@ var DesignExplorer = function (originalData, options) {
 
 	var data = [];
 
-	var options = options || {
+	var options = incomingOptions || {
 		'hiddenKeys': []
 	};
 

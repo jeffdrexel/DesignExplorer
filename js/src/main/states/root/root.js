@@ -5,7 +5,7 @@ app.config(function ($stateProvider) {
 	$stateProvider.state('root', {
 		name: 'root',
 		// abstract: true,
-		url: '/?data_prefix',
+		url: '/?set',
 		templateUrl: 'js/src/main/states/root/root.html',
 		controller: 'RootStateCtrl'
 	});
@@ -19,18 +19,19 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 
 	var isFullscreen = false;
 
-	var dataPrefix = $stateParams.data_prefix || 'design_explorer_data/';
+	var dataPrefix = 'data/' + $stateParams.set + '/';
 
 	var url = dataPrefix + 'options.json';
 
 	$.get(dataPrefix + 'options.json', function (options) {
+		if(!options.dataUrl) options=JSON.parse(options);
 		d3.csv(dataPrefix + options.dataUrl)
 			.get(function (error, rows) {
 				rows.forEach(function (row) {
 					row.img = dataPrefix + row.img;
 					row.threeD = dataPrefix + row.threeD;
 				});
-				$scope.designExplorer = new DesignExplorer(rows,options);
+				$scope.designExplorer = new DesignExplorer(rows, options);
 				drawDesignExplorer();
 			});
 	});

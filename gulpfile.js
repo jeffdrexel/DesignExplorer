@@ -107,7 +107,7 @@ gulp.task('view-documentation', shell.task([
 // upload to s3 bucket
 gulp.task("upload-s3", function () {
 
-	var bucketName = '2085-em-designexplorer';
+	var bucketName = 'kpfui-de';
 	var aclValue = 'public-read';
 
 	gulp.src(['index.html'])
@@ -119,11 +119,11 @@ gulp.task("upload-s3", function () {
 			maxRetries: 5
 		}));
 
-	['css', 'design_explorer_data/kpf', 'js/builds', 'js/src', 'json', 'lib'].forEach(function (folder) {
+	['css', 'js/builds', 'js/src', 'lib'].forEach(function (folder) {
 
 		var prefix = "./" + folder + "/**/*";
 
-		var srcFiles = [prefix + '.js', prefix + '.json', prefix + '.css', prefix + '.csv', prefix + '.png'];
+		var srcFiles = [prefix + '.js', prefix + '.json', prefix + '.css'];
 
 		if (folder === 'js/src') {
 			srcFiles = [prefix + '.html'];
