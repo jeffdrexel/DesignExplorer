@@ -1,35 +1,38 @@
 <div class="row">
-  <div class="col-xs-12" ng-if="selectedIteration">
-    <h3>Selected:</h3>
-    <small ng-switch="selectedIteration[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(selectedIteration)}}">
+    <div class="col-xs-12" ng-if="selectedIteration">
+        <h3>Selected:</h3>
+        <small ng-switch="selectedIteration[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(selectedIteration)}}">
       <span ng-switch-when="number">{{selectedIteration[getOrderBy()] | number}}</span>
       <span ng-switch-default>{{selectedIteration[getOrderBy()]}}</span>
     </small>
-    <div style="border:3px solid {{designExplorer.colorer(selectedIteration)}}">
-      <img class="img-responsive" ng-src="{{selectedIteration.imgThumb}}" />
+        <div style="border:3px solid {{designExplorer.colorer(selectedIteration)}}">
+            <img class="img-responsive" ng-src="{{selectedIteration.imgThumb}}" />
+        </div>
+
+        <hr />
     </div>
-
-    <hr />
-  </div>
     <div class="col-xs-12" style="text-align: center;">
-          <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy()" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
+        <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: designExplorer.options.resultIconLimit" ng-click="selectIteration(result)" ng-mouseleave="resultUnhighlight()" ng-mouseover="highlightIteration(result)" class="result-image"
+            style="border:3px solid {{designExplorer.colorer(result)}}">
 
-              <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
+            <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
                 <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
                 <span ng-switch-default>{{result[getOrderBy()]}}</span>
               </small>
 
-              </small>
+            <div class="result-thumb-pic-container text-center">
               <img class="img-responsive" ng-src="{{result.imgThumb}}" />
-          </div>
+              <small ng-if="selectedIteration==result" class="text-warning caption">Currently Selected</small>
+            </div>
 
-          <!-- <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo:10" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
+
+        </div>
+
+        <!-- <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo:10" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
 
               <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
                 <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
                 <span ng-switch-default>{{result[getOrderBy()]}}</span>
-              </small>
-
               </small>
               <img class="img-responsive" ng-src="{{result.imgThumb}}" />
           </div> -->

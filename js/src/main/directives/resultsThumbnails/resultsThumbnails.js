@@ -14,6 +14,15 @@ app.directive('resultsThumbnails', function ($timeout) {
 			scope.getOrderBy = function () {
 				return (scope.designExplorer && scope.designExplorer.selectedParam) ? scope.designExplorer.selectedParam[DesignExplorer.dataKey] : '';
 			};
+
+			scope.resultUnhighlight=function(){
+				if(scope.selectedIteration){
+					scope.highlightIteration(scope.selectedIteration);
+				} else{
+					scope.unhighlightParcoords();
+				}
+			};
+
 		}
 	};
 });

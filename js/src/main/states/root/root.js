@@ -24,7 +24,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 	var url = dataPrefix + 'options.json';
 
 	$.get(dataPrefix + 'options.json', function (options) {
-		if(!options.dataUrl) options=JSON.parse(options);
+		if (!options.dataUrl) options = JSON.parse(options);
 		d3.csv(dataPrefix + options.dataUrl)
 			.get(function (error, rows) {
 				rows.forEach(function (row) {
@@ -59,9 +59,18 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 	$scope.selectIteration = function (iteration) {
 		$scope.resultMode = 'image';
 		$scope.selectedIteration = iteration;
+		$scope.resizeThumbnails();
 		if (!iteration) return;
 		$scope.designExplorer.populateIterationTable($('#selected-iteration-info'), iteration);
-		$scope.designExplorer.graphs.parcoords.clear('highlight');
+		$scope.highlightIteration(iteration);
+	};
+
+	$scope.unhighlightParcoords = function () {
+		$scope.designExplorer.graphs.parcoords.unhighlight();
+	};
+
+	$scope.highlightIteration = function (iteration) {
+		$scope.unhighlightParcoords();
 		$timeout(function () {
 			$scope.designExplorer.graphs.parcoords.highlight([iteration]);
 		});
@@ -118,6 +127,8 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 		var paddingSize = 24;
 
 		var resultThumbnails = $('.result-image');
+
+		if ($scope.selectedIteration) size=0;
 		resultThumbnails.css('width', size - paddingSize + 'px');
 
 		function getColumnCount(ratio, numItems) {

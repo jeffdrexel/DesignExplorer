@@ -49,6 +49,10 @@
             <li>
                 <a><b>{{filteredEntries.length}}</b> Entries</a>
             </li>
+            <li ng-if="filteredEntries.length>designExplorer.options.resultIconLimit">
+                <a><b>{{designExplorer.options.resultIconLimit}}</b> Shown</a>
+            </li>
+
             <li class="dropdown active">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sorted by {{designExplorer.selectedParam.type.display}}: {{designExplorer.selectedParam.display}}<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">

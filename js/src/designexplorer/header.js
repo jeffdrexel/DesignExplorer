@@ -11,8 +11,13 @@ var DesignExplorer = function (originalData, incomingOptions) {
 	var data = [];
 
 	var options = incomingOptions || {
-		'hiddenKeys': []
+		'useThumbUrls': true
 	};
+
+	options.hiddenKeys = options.hiddenKeys || [];
+	options.resultIconLimit = options.resultIconLimit || Infinity;
+
+	designExplorer.options = options;
 
 	// Dictionaried params
 	designExplorer.params = {
@@ -87,7 +92,7 @@ var DesignExplorer = function (originalData, incomingOptions) {
 				});
 
 			if (cleanedDatum.img) {
-				cleanedDatum.imgThumb = cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1');
+				cleanedDatum.imgThumb = options.useThumbUrls ? cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1') : cleanedDatum.img;
 			}
 
 			data.push(cleanedDatum);

@@ -9,4 +9,15 @@ $result-image-margin:24px;
     margin-right: $result-image-margin/2;
     margin-left: $result-image-margin/2;
     margin-bottom: $result-image-margin;
+
+    .result-thumb-pic-container {
+      position: relative;
+    }
+
+    .caption {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
 }
