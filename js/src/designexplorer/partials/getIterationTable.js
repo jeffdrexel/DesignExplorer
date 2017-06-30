@@ -5,6 +5,11 @@ DesignExplorer.prototype.populateIterationTable = function (jqElement, iteration
 
 	jqElement.html('');
 
+	if (iteration.name) {
+		jqElement.append('<h3>Name: ' + iteration.name+'</h3>');
+		jqElement.append('<br />');
+	}
+
 	paramTypes.forEach(function (key) {
 		var type = DesignExplorer.typeDisplayDictionary[key];
 		var table = $('<table class="table table-condensed"></table>');
@@ -19,8 +24,12 @@ DesignExplorer.prototype.populateIterationTable = function (jqElement, iteration
 			if (param === designExplorer.selectedParam) row.css('border-left', '5px solid ' + designExplorer.colorer(iteration))
 				.css('font-weight', 'bold');
 		});
-		jqElement.append('<h4>' + type.display + 's</h4>');
-		jqElement.append(table);
+
+		if(params.length){
+			jqElement.append('<h4>' + type.display + 's</h4>');
+			jqElement.append(table);
+		}
+
 	});
 
 

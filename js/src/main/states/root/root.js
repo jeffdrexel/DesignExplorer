@@ -19,9 +19,13 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 
 	var isFullscreen = false;
 
-	var dataPrefix = 'data/' + $stateParams.set + '/';
+	var setVars = $stateParams.set.split(",");
+
+	var dataPrefix = 'data/' + setVars[0] + '/';
 
 	var url = dataPrefix + 'options.json';
+
+	$scope.devMode = setVars[1] || false;
 
 	$.get(dataPrefix + 'options.json', function (options) {
 		if (!options.dataUrl) options = JSON.parse(options);
@@ -128,7 +132,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 
 		var resultThumbnails = $('.result-image');
 
-		if ($scope.selectedIteration) size=0;
+		if ($scope.selectedIteration) size = 0;
 		resultThumbnails.css('width', size - paddingSize + 'px');
 
 		function getColumnCount(ratio, numItems) {

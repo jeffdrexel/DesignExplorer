@@ -93,6 +93,7 @@ var DesignExplorer = function (originalData, incomingOptions) {
 
 			if (cleanedDatum.img) {
 				cleanedDatum.imgThumb = options.useThumbUrls ? cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1') : cleanedDatum.img;
+				cleanedDatum.imgName=cleanedDatum.img.split('/').pop();
 			}
 
 			data.push(cleanedDatum);

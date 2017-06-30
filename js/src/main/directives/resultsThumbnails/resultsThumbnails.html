@@ -12,6 +12,16 @@
         <hr />
     </div>
     <div class="col-xs-12" style="text-align: center;">
+        {{devMode}}
+        <div ng-if="devMode">
+            <input ng-model="devNumPlace" class="form-control" type="number" placeholder="num images to place" />
+            <p>
+                <span ng-if="devNumPlace>0" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: devNumPlace">
+                    "{{result.imgName}}" 
+                </span>
+            </p>
+        </div>
+
         <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: designExplorer.options.resultIconLimit" ng-click="selectIteration(result)" ng-mouseleave="resultUnhighlight()" ng-mouseover="highlightIteration(result)" class="result-image"
             style="border:3px solid {{designExplorer.colorer(result)}}">
 
