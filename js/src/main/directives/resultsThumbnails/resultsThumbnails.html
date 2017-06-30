@@ -12,12 +12,11 @@
         <hr />
     </div>
     <div class="col-xs-12" style="text-align: center;">
-        {{devMode}}
         <div ng-if="devMode">
             <input ng-model="devNumPlace" class="form-control" type="number" placeholder="num images to place" />
             <p>
                 <span ng-if="devNumPlace>0" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: devNumPlace">
-                    "{{result.imgName}}" 
+                    "{{result.imgName}}"
                 </span>
             </p>
         </div>
