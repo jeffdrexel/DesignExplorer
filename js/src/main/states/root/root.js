@@ -130,7 +130,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 		var size = Math.floor(flow.width() / colCount);
 		var paddingSize = 24;
 
-		var resultThumbnails = $('.result-image');
+		var resultThumbnails = $('.result-image .result-image-frame');
 
 		if ($scope.selectedIteration) size = 0;
 		resultThumbnails.css('width', size - paddingSize + 'px');

@@ -16,6 +16,8 @@ var DesignExplorer = function (originalData, incomingOptions) {
 
 	options.hiddenKeys = options.hiddenKeys || [];
 	options.resultIconLimit = options.resultIconLimit || Infinity;
+	options.thumbKeys = options.thumbKeys || [];
+	options.thumbParams = [];
 
 	designExplorer.options = options;
 
@@ -42,7 +44,7 @@ var DesignExplorer = function (originalData, incomingOptions) {
 	};
 
 	// Set default sort by key
-	designExplorer.setColorer(designExplorer.params.in[0]);
+	designExplorer.setColorer(options.defaultSortParam || designExplorer.params.in[0]);
 
 	/*
 	 █████  ███    ██  ██████  ███    ██
@@ -69,6 +71,17 @@ var DesignExplorer = function (originalData, incomingOptions) {
 						designExplorer.paramsAll.push(keyObj);
 						designExplorer.params[keyType] = designExplorer.params[keyType] || [];
 						designExplorer.params[keyType].push(keyObj);
+
+						// Add to thumbnail params to show via options
+						if (options.thumbKeys.indexOf(key) !== -1) {
+							options.thumbParams.push(keyObj);
+						}
+
+						// Set default sort key from options if existing
+						if (options.defaultSortKey && key === options.defaultSortKey) {
+							options.defaultSortParam = keyObj;
+						}
+
 					}
 				});
 		});
@@ -93,7 +106,8 @@ var DesignExplorer = function (originalData, incomingOptions) {
 
 			if (cleanedDatum.img) {
 				cleanedDatum.imgThumb = options.useThumbUrls ? cleanedDatum.img.replace(/.(png|gif|jpe?g)$/i, '_thumb.$1') : cleanedDatum.img;
-				cleanedDatum.imgName=cleanedDatum.img.split('/').pop();
+				cleanedDatum.imgName = cleanedDatum.img.split('/')
+					.pop();
 			}
 
 			data.push(cleanedDatum);
