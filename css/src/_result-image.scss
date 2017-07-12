@@ -1,4 +1,4 @@
-$result-image-margin:24px;
+$result-image-margin: 24px;
 
 .result-image {
     display: inline-block;
@@ -11,15 +11,16 @@ $result-image-margin:24px;
     margin-bottom: $result-image-margin;
 
     .result-thumb-pic-container {
-      position: relative;
+        position: relative;
     }
 
-    .result-image-frame-params{
-      text-align: left;
+    .result-image-frame-params {
+        border-top: 1px solid $gray-light;
+        text-align: left;
     }
 
-    .result-thumb-params{
-      white-space: nowrap;
+    .result-thumb-params {
+        white-space: nowrap;
     }
 
     .caption {

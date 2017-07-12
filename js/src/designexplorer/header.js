@@ -18,6 +18,8 @@ var DesignExplorer = function (originalData, incomingOptions) {
 	options.resultIconLimit = options.resultIconLimit || Infinity;
 	options.thumbKeys = options.thumbKeys || [];
 	options.thumbParams = [];
+	options.maxThumbCols = options.maxThumbCols || 12;
+	options.showThumbValueLabels = options.showThumbValueLabels || false;
 
 	designExplorer.options = options;
 

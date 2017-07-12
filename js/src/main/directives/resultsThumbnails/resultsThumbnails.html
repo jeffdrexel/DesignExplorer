@@ -11,48 +11,59 @@
 
         <hr />
     </div>
-    <div class="col-xs-12" style="text-align: center;">
-        <div ng-if="devMode">
-            <input ng-model="devNumPlace" class="form-control" type="number" placeholder="num images to place" />
-            <p>
-                <span ng-if="devNumPlace>0" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: devNumPlace">
-                    "{{result.imgName}}"
-                </span>
-            </p>
-        </div>
+    <div id="results-thumbnails" class="fullscreen-scrollable col-xs-12" style="text-align: center;">
 
-        <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: designExplorer.options.resultIconLimit" ng-click="selectIteration(result)" ng-mouseleave="resultUnhighlight()" ng-mouseover="highlightIteration(result)" class="result-image"
-            style="border:3px solid {{designExplorer.colorer(result)}}">
+        <div>
+            <div ng-if="devMode">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="toggleFullscreen('#results-thumbnails')">Toggle Thumbnail Fullscreen</button>
+                      </span>
+                    <input ng-model="devNumPlace" class="form-control" type="number" placeholder="num images to place" />
+                </div>
+                <!-- /input-group -->
 
-            <div class="result-image-frame">
-              <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
-                <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
-                <span ng-switch-default>{{result[getOrderBy()]}}</span>
-              </small>
-
-              <div class="result-thumb-pic-container text-center">
-                <img class="img-responsive" ng-src="{{result.imgThumb}}" />
-                <small ng-if="selectedIteration==result" class="text-warning caption">Currently Selected</small>
-              </div>
+                <p>
+                    <span ng-if="devNumPlace>0" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: devNumPlace">
+                        "{{result.imgName}}"
+                    </span>
+                </p>
             </div>
 
-            <div class="result-image-frame-params">
-              <small class="result-thumb-params text-muted">
-                  <span ng-repeat="param in designExplorer.options.thumbParams">
-                      {{param.display}}: {{result[param[DesignExplorer.dataKey]]}}<br />
-                  </span>
-              </small>
+            <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo: designExplorer.options.resultIconLimit" ng-click="selectIteration(result)" ng-mouseleave="resultUnhighlight()" ng-mouseover="highlightIteration(result)" class="result-image"
+                style="border:3px solid {{designExplorer.colorer(result)}}">
+
+                <div class="result-image-frame">
+                    <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
+                      <span ng-if="designExplorer.options.showThumbValueLabels">{{designExplorer.selectedParam.display}}: </span>
+                      <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
+                      <span ng-switch-default>{{result[getOrderBy()]}}</span>
+                    </small>
+
+                    <div class="result-thumb-pic-container text-center">
+                        <img class="img-responsive" ng-src="{{result.imgThumb}}" />
+                        <small ng-if="selectedIteration==result" class="text-warning caption">Currently Selected</small>
+                    </div>
+                </div>
+
+                <div class="result-image-frame-params">
+                    <small>{{$index}}<br / /></small>
+                    <small class="result-thumb-params text-muted">
+                           <span ng-repeat="param in designExplorer.options.thumbParams">
+                               {{param.display}}: {{result[param[DesignExplorer.dataKey]]}}<br />
+                           </span>
+                      </small>
+                </div>
             </div>
+            <!-- <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo:10" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
+
+                  <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
+                    <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
+                    <span ng-switch-default>{{result[getOrderBy()]}}</span>
+                  </small>
+                  <img class="img-responsive" ng-src="{{result.imgThumb}}" />
+              </div> -->
         </div>
-
-        <!-- <div role="button" ng-repeat="result in filteredEntries | orderBy:'-'+getOrderBy() | limitTo:10" ng-click="selectIteration(result)" class="result-image" style="border:3px solid {{designExplorer.colorer(result)}}">
-
-              <small ng-switch="result[getOrderBy()] | typeof" style="color: {{designExplorer.colorer(result)}}">
-                <span ng-switch-when="number">{{result[getOrderBy()] | number}}</span>
-                <span ng-switch-default>{{result[getOrderBy()]}}</span>
-              </small>
-              <img class="img-responsive" ng-src="{{result.imgThumb}}" />
-          </div> -->
 
     </div>
 </div>

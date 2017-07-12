@@ -99,9 +99,9 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 		});
 	};
 
-	$scope.toggleFullscreen = function () {
+	$scope.toggleFullscreen = function (selector) {
 
-		var div = $('#selected-result');
+		var div = $(selector);
 		var otherDivs = $('.hide-in-fullscreen');
 
 		if (!isFullscreen) {
@@ -136,7 +136,7 @@ app.controller('RootStateCtrl', function ($rootScope, $scope, $timeout, $statePa
 		resultThumbnails.css('width', size - paddingSize + 'px');
 
 		function getColumnCount(ratio, numItems) {
-			var maxCols = 12 + 1;
+			var maxCols = $scope.designExplorer.options.maxThumbCols + 1;
 			var columns = 0;
 			var itemCapacity = 0;
 

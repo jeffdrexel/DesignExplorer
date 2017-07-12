@@ -84,3 +84,7 @@ a {
     // background: rgba(51,51,51,0.7);
     padding-top: $navbar-height; // content to avoid navbar
 }
+
+.fullscreen-scrollable {
+  overflow-y: auto;
+}
