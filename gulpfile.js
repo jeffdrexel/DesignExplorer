@@ -89,14 +89,14 @@ gulp.task('sass', function () {
 gulp.task('document', shell.task([
   'jsdoc ' +
     '-c node_modules/angular-jsdoc/common/conf.json ' + // config file
-    '-t docs/src/angular-template ' + // template file
-    '-d docs/auto/angular ' + // output directory
+    // '-t docs/src/angular-template ' + // template file
+    '-d docs/auto/ ' + // output directory
     './readme.md ' + // to include README.md as index contents
-    '-r js/src/main/ng-partials js/src/main/header.js' //+ // source code directory
+    '-r js/src/main' //+ // source code directory
     // '-u tutorials'                              // tutorials directory
     ,
 		// 'jsdoc -c docs/src/jsdocConf.json -d docs/auto/js'
-		'jsdoc -c docs/src/jsdocConfInkDocstrap.json -d docs/auto/js -t ./node_modules/ink-docstrap/template'
+		// 'jsdoc -c docs/src/jsdocConfInkDocstrap.json -d docs/auto/js -t ./node_modules/ink-docstrap/template'
 ]));
 
 // serve documentation folder
