@@ -1,5 +1,12 @@
 # DesignExplorer
 
+This is a Design Explorer branch, forked from CORE studio for KPFui use.
+
+# Original readme:
+
+```
+# DesignExplorer
+
 Design Explore is a web application to make exploring multi-dimensional design space enjoying and meaningful!
 
 ## Design Explorer is built on top of these plugins and web technologies:
@@ -12,3 +19,4 @@ Design Explore is a web application to make exploring multi-dimensional design s
 ### [Radar Chart](https://github.com/alangrafu/radar-chart-d3)
 ### [Spectacles](https://github.com/tt-acm/Spectacles.WebViewer) - 3D viewer
 ### [Scatter-matrix Chart](https://github.com/benjiec/scatter-matrix)
+```

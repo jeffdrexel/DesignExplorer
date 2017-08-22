@@ -1,0 +1,4 @@
+repo_name=designexplorer
+include_file_pattern=-c "*"
+intra_folder=//kpfny-intra01/kpfui/documentation
+master_branch_only=false
