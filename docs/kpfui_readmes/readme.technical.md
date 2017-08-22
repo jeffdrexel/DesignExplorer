@@ -1,4 +1,6 @@
-# Format and prepare data
+# DesignExplorer
+
+Below we detail the process of how we are expecting your data to come into Design Explorer successfully.
 
 ## Prepare CSV Record
 
