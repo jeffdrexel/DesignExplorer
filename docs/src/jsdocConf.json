@@ -1,0 +1,22 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "source": {
+        "include": ["js/src", "readme.md"],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "templates": {
+        "default": {
+            "layoutFile": "docs/src/jsdoctemplate.tmpl"
+        },
+        "cleverLinks": true,
+        "monospaceLinks": false
+    },
+    "opts": {
+        "recurse": true
+    }
+}
