@@ -1,4 +1,3 @@
 repo_name=designexplorer
-include_file_pattern=-c "./docs/kpfui_readmes/*"
-intra_folder=//kpfny-intra01/kpfui/documentation
-master_branch_only=false
+include_file_pattern="./docs/kpfui_readmes/*"
+master_branch_name=gh-pages
